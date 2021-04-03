@@ -1,0 +1,10 @@
+- Herformuleerde beveiligingsniveaus en verbeterde hun beschrijving.
+- Ondersteuning voor Nextcloud-bladwijzers toegevoegd.
+- Optioneel biometrisch / app-toegangscode app-slot toegevoegd.
+- Automatisch ophalen van OBFS4-bruggen toegevoegd via Meek.
+- Vaste geheugenlekken, waarbij het RAM-gebruik in de loop van de tijd zou toenemen, omdat tabbladen nooit echt uit het geheugen werden verwijderd.
+- Leeg alle achtergrondtabbladen op geheugenwaarschuwingssignaal van iOS.
+- Vaste problemen met soms verwijderde startpagina.
+- Vaste links naar uibrowser.com.
+- Bijgewerkte vertalingen.
+- Kleine bugfixes.

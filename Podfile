@@ -1,19 +1,23 @@
-platform :ios, "11.4"
-use_frameworks!
+platform :ios, '11.4'
 
-target "OnionBrowser2" do
-  pod "InAppSettingsKit"
-  pod "WYPopoverController", :git => "https://github.com/sammcewan/WYPopoverController.git"
-  pod "DTFoundation"
-  pod "OrderedDictionary"
-  pod "XLForm", :git => "https://github.com/jcs/XLForm.git"
-  pod "TUSafariActivity"
-  pod "VForceTouch"
+target 'OnionBrowser2' do
+  pod 'DTFoundation/DTASN1'
+  pod 'TUSafariActivity'
+  pod 'VForceTouch'
 
-  pod "POE", '~> 0.5'
+#  pod 'OCSPCache', :git => 'https://github.com/Psiphon-Labs/OCSPCache'
+
+  pod 'CSPHeader', '~> 0.4'
+
+  pod 'Eureka', '~> 5.2'
+  pod 'ImageRow', '~> 4.0'
+  pod 'Reachability', '~> 3.2'
+  pod 'SDCAlertView', '~> 10'
+  pod 'FavIcon', git: 'https://github.com/tladesignz/FavIcon.git', branch: 'swift-5'
+  pod 'MBProgressHUD', '~> 1.2'
 end
 
-target "OnionBrowser2 Tests" do
-  pod "OCMock"
-  pod "DTFoundation"
+target 'OnionBrowser2 Tests' do
+  pod 'OCMock'
+  pod 'DTFoundation/DTASN1'
 end

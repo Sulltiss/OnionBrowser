@@ -5,10 +5,9 @@
  * See LICENSE file for redistribution terms.
  */
 
-#import "AppDelegate.h"
 #import "CookieJar.h"
-#import "HostSettings.h"
 #import "HTTPSEverywhere.h"
+#import "OnionBrowser-Swift.h"
 
 /*
  * local storage is found in NSCachesDirectory and can be a file or directory:
@@ -35,11 +34,27 @@
 #define LOCAL_STORAGE_REGEX_HOSTNAME_GROUP 3
 
 /* files we'll exclude from a deep-clean of the cache directory */
-#define CACHE_EXCLUSIONS_REGEX @"^(%@(/(HSTS\\.plist|com\\.apple\\.(metal|opengl)(/.*)?|(Databases|Cache)\\.db(-shm|-wal)?))?|Snapshots(/.*)?|tor(/.*)?)$"
+#define CACHE_EXCLUSIONS_REGEX @"^(%@(/(HSTS\\.plist|com\\.apple\\.(metal|opengl)(/.*)?|(Databases|Cache)\\.db(-shm|-wal)?))?|Snapshots(/.*)?|tor(/.*)?|start.html)$"
 
 @implementation CookieJar {
 	AppDelegate *appDelegate;
 }
+
+
++ (BOOL)isSameOrigin:(NSURL *)aURL toURL:(NSURL *)bURL
+{
+	if ([aURL.scheme caseInsensitiveCompare:bURL.scheme] != NSOrderedSame) return NO;
+	if ([aURL.host caseInsensitiveCompare:bURL.host] != NSOrderedSame) return NO;
+
+	if (aURL.port || bURL.port)
+	{
+		// TODO: should we match ports 80 and 443 to nil for http and https respectively?
+		if (![aURL.port isEqual:bURL.port]) return NO;
+	}
+
+	return YES;
+}
+
 
 - (CookieJar *)init
 {
@@ -63,53 +78,24 @@
 			
 			NSLog(@"[CookieJar] migrating old cookie whitelist to HostSettings: %@", list);
 			for (NSString *host in [list allKeys]) {
-				HostSettings *hc = [HostSettings forHost:host];
-				if (hc == nil)
-					hc = [[HostSettings alloc] initForHost:host withDict:nil];
-				
-				[hc setSetting:HOST_SETTINGS_KEY_WHITELIST_COOKIES toValue:HOST_SETTINGS_VALUE_YES];
+				HostSettings *hc = [HostSettings for:host];
+				hc.whitelistCookies = YES;
 				[hc save];
 			}
 			
-			[HostSettings persist];
+			[HostSettings store];
 			[fileManager removeItemAtPath:whitelist error:nil];
 		}
 	}
-	
-	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	[self setOldDataSweepTimeout:[NSNumber numberWithInteger:[userDefaults integerForKey:@"old_data_sweep_mins"]]];
+
+	self.oldDataSweepTimeout = [NSNumber numberWithDouble:Settings.cookieAutoSweepInterval];
 	
 	return self;
 }
 
 - (BOOL)isHostWhitelisted:(NSString *)host
 {
-	host = [host lowercaseString];
-
-	HostSettings *hs = [HostSettings forHost:host];
-	if (hs && [hs boolSettingOrDefault:HOST_SETTINGS_KEY_WHITELIST_COOKIES]) {
-#ifdef TRACE_COOKIE_WHITELIST
-		NSLog(@"[CookieJar] found entry for %@", host);
-#endif
-		return YES;
-	}
-	
-	/* for a cookie host of x.y.z.example.com, try y.z.example.com, z.example.com, example.com, etc. */
-	NSArray *hostp = [host componentsSeparatedByString:@"."];
-	for (int i = 1; i < [hostp count]; i++) {
-		NSString *wc = [[hostp subarrayWithRange:NSMakeRange(i, [hostp count] - i)] componentsJoinedByString:@"."];
-
-		if ((hs = [HostSettings forHost:wc]) && [hs boolSettingOrDefault:HOST_SETTINGS_KEY_WHITELIST_COOKIES]) {
-#ifdef TRACE_COOKIE_WHITELIST
-			NSLog(@"[CookieJar] found entry for component %@ in %@", wc, host);
-#endif
-			return YES;
-		}
-	}
-	
-	/* no match for any of these hosts, use the default */
-	hs = [HostSettings defaultHostSettings];
-	return [hs boolSettingOrDefault:HOST_SETTINGS_KEY_WHITELIST_COOKIES];
+	return [HostSettings for:host.lowercaseString].whitelistCookies;
 }
 
 - (NSArray *)sortedHostCounts
@@ -172,7 +158,7 @@
 
 		NSArray *matches = [regex matchesInString:file options:0 range:NSMakeRange(0, [file length])];
 		if (!matches || ![matches count]) {
-			[files setObject:NSLocalizedString(@"(Other cache data)", nil) forKey:absFile];
+			[files setObject:NSLocalizedString(@"(other cache data)", nil) forKey:absFile];
 			continue;
 		}
 		

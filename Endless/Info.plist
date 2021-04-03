@@ -23,12 +23,16 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
 			<key>CFBundleURLName</key>
 			<string>com.miketigas.onionbrowser</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>onionhttp</string>
 				<string>onionhttps</string>
+				<string>http</string>
+				<string>https</string>
 			</array>
 		</dict>
 	</array>
@@ -36,12 +40,6 @@
 	<string>OBBundleVersion</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>onepassword</string>
-		<string>bitwarden</string>
-		<string>org-appextension-feature-password-management</string>
-	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -53,6 +51,8 @@
 	<string>Needed to read bridge addresses from displayed QR codes.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Needed to store the selected image to your photos.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Needed, if you want to unlock the app with Face ID.</string>
 	<key>NSMainNibFile</key>
 	<string>Launch Screen</string>
 	<key>UIApplicationShortcutItems</key>
@@ -85,7 +85,7 @@
 		<string>armv7</string>
 	</array>
 	<key>UIStatusBarHidden</key>
-	<true/>
+	<false/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

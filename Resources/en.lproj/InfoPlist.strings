@@ -1,0 +1,13 @@
+/*
+ InfoPlist.strings
+ Endless
+
+ Created by Benjamin Erhart on 03.04.19.
+ Copyright © 2019 jcs. All rights reserved.
+ */
+NSPhotoLibraryAddUsageDescription = "Needed to store the selected image to your photos.";
+NSCameraUsageDescription = "Needed to read bridge addresses from displayed QR codes.";
+NSFaceIDUsageDescription = "Needed, if you want to unlock the app with Face ID.";
+"New Tab" = "New Tab";
+"Clear Data" = "Clear Data";
+"Close tabs and clear data" = "Close tabs and clear data";

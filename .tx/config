@@ -2,62 +2,152 @@
 host = https://www.transifex.com
 
 [onion-browser.localizablestrings]
-file_filter = Endless/<lang>.lproj/Localizable.strings
-source_file = Endless/Base.lproj/Localizable.strings
+file_filter = Resources/<lang>.lproj/Localizable.strings
+minimum_perc = 50
+source_file = Resources/Base.lproj/Localizable.strings
 source_lang = en_US
-trans.ar = Endless/ar-001.lproj/Localizable.strings
-trans.ca = Endless/ca-ES.lproj/Localizable.strings
-trans.hu_HU = Endless/hu-HU.lproj/Localizable.strings
-trans.pt_BR = Endless/pt-BR.lproj/Localizable.strings
-trans.pt_PT = Endless/pt-PT.lproj/Localizable.strings
-trans.tr_TR = Endless/tr-TR.lproj/Localizable.strings
+trans.ca = Resources/ca-ES.lproj/Localizable.strings
+trans.hu_HU = Resources/hu-HU.lproj/Localizable.strings
+trans.pt_BR = Resources/pt-BR.lproj/Localizable.strings
+trans.pt_PT = Resources/pt-PT.lproj/Localizable.strings
+trans.tr_TR = Resources/tr-TR.lproj/Localizable.strings
 type = STRING
 
-[onion-browser.onepasswordextensionstrings]
-file_filter = Endless/<lang>.lproj/OnePasswordExtension.strings
-source_file = Endless/Base.lproj/OnePasswordExtension.strings
-source_lang = en_US
-trans.ar = Endless/ar-001.lproj/OnePasswordExtension.strings
-trans.ca = Endless/ca-ES.lproj/OnePasswordExtension.strings
-trans.hu_HU = Endless/hu-HU.lproj/OnePasswordExtension.strings
-trans.pt_BR = Endless/pt-BR.lproj/OnePasswordExtension.strings
-trans.pt_PT = Endless/pt-PT.lproj/OnePasswordExtension.strings
-trans.tr_TR = Endless/tr-TR.lproj/OnePasswordExtension.strings
-type = STRING
-
-[onion-browser.rootstrings]
-file_filter = Endless/InAppSettings.bundle/<lang>.lproj/Root.strings
-source_file = Endless/InAppSettings.bundle/en.lproj/Root.strings
-source_lang = en_US
-trans.ar = Endless/InAppSettings.bundle/ar-001.lproj/Root.strings
-trans.ca = Endless/InAppSettings.bundle/ca-ES.lproj/Root.strings
-trans.hu_HU = Endless/InAppSettings.bundle/hu-HU.lproj/Root.strings
-trans.pt_BR = Endless/InAppSettings.bundle/pt-BR.lproj/Root.strings
-trans.pt_PT = Endless/InAppSettings.bundle/pt-PT.lproj/Root.strings
-trans.tr_TR = Endless/InAppSettings.bundle/tr-TR.lproj/Root.strings
-type = STRING
-
-[onion-browser.appstorestringsmd]
-file_filter = AppStore/<lang>.lproj/AppStoreStrings.md
-source_file = AppStore/Base.lproj/AppStoreStrings.md
-source_lang = en_US
-trans.ar = AppStore/ar-001.lproj/AppStoreStrings.md
-trans.ca = AppStore/ca-ES.lproj/AppStoreStrings.md
-trans.hu_HU = AppStore/hu-HU.lproj/AppStoreStrings.md
-trans.pt_BR = AppStore/pt-BR.lproj/AppStoreStrings.md
-trans.pt_PT = AppStore/pt-PT.lproj/AppStoreStrings.md
-trans.tr_TR = AppStore/tr-TR.lproj/AppStoreStrings.md
-type = GITHUBMARKDOWN
+[onion-browser.localizable-stringsdict]
+file_filter = Resources/<lang>.lproj/Localizable.stringsdict
+minimum_perc = 0
+source_file = Resources/en.lproj/Localizable.stringsdict
+source_lang = en
+type = STRINGSDICT
 
 [onion-browser.infoplist-strings]
-file_filter = Endless/<lang>.lproj/InfoPlist.strings
-minimum_perc = 0
-source_file = Endless/en.lproj/InfoPlist.strings
+file_filter = Resources/<lang>.lproj/InfoPlist.strings
+minimum_perc = 75
+source_file = Resources/en.lproj/InfoPlist.strings
 source_lang = en_US
+trans.ca = Resources/ca-ES.lproj/InfoPlist.strings
+trans.hu_HU = Resources/hu-HU.lproj/InfoPlist.strings
+trans.pt_BR = Resources/pt-BR.lproj/InfoPlist.strings
+trans.pt_PT = Resources/pt-PT.lproj/InfoPlist.strings
+trans.tr_TR = Resources/tr-TR.lproj/InfoPlist.strings
 type = STRINGS
-trans.ar = Endless/ar-001.lproj/InfoPlist.strings
-trans.ca = Endless/ca-ES.lproj/InfoPlist.strings
-trans.hu_HU = Endless/hu-HU.lproj/InfoPlist.strings
-trans.pt_BR = Endless/pt-BR.lproj/InfoPlist.strings
-trans.pt_PT = Endless/pt-PT.lproj/InfoPlist.strings
-trans.tr_TR = Endless/tr-TR.lproj/InfoPlist.strings
+
+[onion-browser.security-levels]
+file_filter = Resources/<lang>.lproj/security-levels.html
+minimum_perc = 50
+source_file = Resources/Base.lproj/security-levels.html
+source_lang = en_US
+trans.ca = Resources/ca-ES.lproj/security-levels.html
+trans.hu_HU = Resources/hu-HU.lproj/security-levels.html
+trans.pt_BR = Resources/pt-BR.lproj/security-levels.html
+trans.pt_PT = Resources/pt-PT.lproj/security-levels.html
+trans.tr_TR = Resources/tr-TR.lproj/security-levels.html
+type = HTML
+
+[onion-browser.subtitle]
+file_filter = fastlane/metadata/<lang>/subtitle.txt
+minimum_perc = 100
+source_file = fastlane/metadata/en-US/subtitle.txt
+source_lang = en_US
+trans.ar = fastlane/metadata_unused/ar-SA/subtitle.txt
+trans.bn = fastlane/metadata_unused/bn/subtitle.txt
+trans.de = fastlane/metadata/de-DE/subtitle.txt
+trans.es = fastlane/metadata/es-ES/subtitle.txt
+trans.fa = fastlane/metadata_unused/fa/subtitle.txt
+trans.fr = fastlane/metadata/fr-FR/subtitle.txt
+trans.ga = fastlane/metadata_unused/ga/subtitle.txt
+trans.hu_HU = fastlane/metadata/hu/subtitle.txt
+trans.is = fastlane/metadata_unused/is/subtitle.txt
+trans.mk = fastlane/metadata_unused/mk/subtitle.txt
+trans.nb = fastlane/metadata/no/subtitle.txt
+trans.nl = fastlane/metadata/nl-NL/subtitle.txt
+trans.pt_BR = fastlane/metadata/pt-BR/subtitle.txt
+trans.pt_PT = fastlane/metadata/pt-PT/subtitle.txt
+trans.sq = fastlane/metadata_unused/sq/subtitle.txt
+trans.ta = fastlane/metadata_unused/ta/subtitle.txt
+trans.te = fastlane/metadata_unused/te/subtitle.txt
+trans.tr_TR = fastlane/metadata/tr/subtitle.txt
+trans.zh-Hans = fastlane/metadata_unused/zh-Hans/subtitle.txt
+trans.zh-Hant = fastlane/metadata_unused/zh-Hant/subtitle.txt
+type = TXT
+
+[onion-browser.keywords]
+file_filter = fastlane/metadata/<lang>/keywords.txt
+minimum_perc = 75
+source_file = fastlane/metadata/en-US/keywords.txt
+source_lang = en_US
+trans.ar = fastlane/metadata_unused/ar-SA/keywords.txt
+trans.bn = fastlane/metadata_unused/bn/keywords.txt
+trans.de = fastlane/metadata/de-DE/keywords.txt
+trans.es = fastlane/metadata/es-ES/keywords.txt
+trans.fa = fastlane/metadata_unused/fa/keywords.txt
+trans.fr = fastlane/metadata/fr-FR/keywords.txt
+trans.ga = fastlane/metadata_unused/ga/keywords.txt
+trans.hu_HU = fastlane/metadata/hu/keywords.txt
+trans.is = fastlane/metadata_unused/is/keywords.txt
+trans.mk = fastlane/metadata_unused/mk/keywords.txt
+trans.nb = fastlane/metadata/no/keywords.txt
+trans.nl = fastlane/metadata/nl-NL/keywords.txt
+trans.pt_BR = fastlane/metadata/pt-BR/keywords.txt
+trans.pt_PT = fastlane/metadata/pt-PT/keywords.txt
+trans.sq = fastlane/metadata_unused/sq/keywords.txt
+trans.ta = fastlane/metadata_unused/ta/keywords.txt
+trans.te = fastlane/metadata_unused/te/keywords.txt
+trans.tr_TR = fastlane/metadata/tr/keywords.txt
+trans.zh-Hans = fastlane/metadata_unused/zh-Hans/keywords.txt
+trans.zh-Hant = fastlane/metadata_unused/zh-Hant/keywords.txt
+type = TXT
+
+[onion-browser.description]
+file_filter = fastlane/metadata/<lang>/description.txt
+minimum_perc = 75
+source_file = fastlane/metadata/en-US/description.txt
+source_lang = en_US
+trans.ar = fastlane/metadata_unused/ar-SA/description.txt
+trans.bn = fastlane/metadata_unused/bn/description.txt
+trans.de = fastlane/metadata/de-DE/description.txt
+trans.es = fastlane/metadata/es-ES/description.txt
+trans.fa = fastlane/metadata_unused/fa/description.txt
+trans.fr = fastlane/metadata/fr-FR/description.txt
+trans.ga = fastlane/metadata_unused/ga/description.txt
+trans.hu_HU = fastlane/metadata/hu/description.txt
+trans.is = fastlane/metadata_unused/is/description.txt
+trans.mk = fastlane/metadata_unused/mk/description.txt
+trans.nb = fastlane/metadata/no/description.txt
+trans.nl = fastlane/metadata/nl-NL/description.txt
+trans.pt_BR = fastlane/metadata/pt-BR/description.txt
+trans.pt_PT = fastlane/metadata/pt-PT/description.txt
+trans.sq = fastlane/metadata_unused/sq/description.txt
+trans.ta = fastlane/metadata_unused/ta/description.txt
+trans.te = fastlane/metadata_unused/te/description.txt
+trans.tr_TR = fastlane/metadata/tr/description.txt
+trans.zh-Hans = fastlane/metadata_unused/zh-Hans/description.txt
+trans.zh-Hant = fastlane/metadata_unused/zh-Hant/description.txt
+type = TXT
+
+[onion-browser.release-notes]
+file_filter = fastlane/metadata/<lang>/release_notes.txt
+minimum_perc = 75
+source_file = fastlane/metadata/en-US/release_notes.txt
+source_lang = en_US
+trans.ar = fastlane/metadata_unused/ar-SA/release_notes.txt
+trans.bn = fastlane/metadata_unused/bn/release_notes.txt
+trans.de = fastlane/metadata/de-DE/release_notes.txt
+trans.es = fastlane/metadata/es-ES/release_notes.txt
+trans.fa = fastlane/metadata_unused/fa/release_notes.txt
+trans.fr = fastlane/metadata/fr-FR/release_notes.txt
+trans.ga = fastlane/metadata_unused/ga/release_notes.txt
+trans.hu_HU = fastlane/metadata/hu/release_notes.txt
+trans.is = fastlane/metadata_unused/is/release_notes.txt
+trans.mk = fastlane/metadata_unused/mk/release_notes.txt
+trans.nb = fastlane/metadata/no/release_notes.txt
+trans.nl = fastlane/metadata/nl-NL/release_notes.txt
+trans.pt_BR = fastlane/metadata/pt-BR/release_notes.txt
+trans.pt_PT = fastlane/metadata/pt-PT/release_notes.txt
+trans.sq = fastlane/metadata_unused/sq/release_notes.txt
+trans.ta = fastlane/metadata_unused/ta/release_notes.txt
+trans.te = fastlane/metadata_unused/te/release_notes.txt
+trans.tr_TR = fastlane/metadata/tr/release_notes.txt
+trans.zh-Hans = fastlane/metadata_unused/zh-Hans/release_notes.txt
+trans.zh-Hant = fastlane/metadata_unused/zh-Hant/release_notes.txt
+type = TXT

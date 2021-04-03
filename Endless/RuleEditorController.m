@@ -15,8 +15,6 @@ UISearchController *searchController;
 {
 	self = [super initWithStyle:style];
 	
-	self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	
 	self.sortedRuleRows = [[NSMutableArray alloc] init];
 	self.inUseRuleRows = [[NSMutableArray alloc] init];
 
@@ -79,17 +77,24 @@ UISearchController *searchController;
 	
 	NSString *disabled = [self ruleDisabledReason:row];
 	if (disabled == nil) {
-		cell.textLabel.textColor = [UIColor darkTextColor];
+		if (@available(iOS 13.0, *)) {
+			cell.textLabel.textColor = UIColor.labelColor;
+			cell.detailTextLabel.textColor = UIColor.secondaryLabelColor;
+		}
+		else {
+			cell.textLabel.textColor = UIColor.darkTextColor;
+			cell.detailTextLabel.textColor = UIColor.darkGrayColor;
+		}
+
 		cell.detailTextLabel.text = [row detailTextLabel];
-		cell.detailTextLabel.textColor = [UIColor darkGrayColor];
 	}
 	else {
-		cell.textLabel.textColor = [UIColor redColor];
+		cell.textLabel.textColor = UIColor.systemRedColor;
 		if ([row detailTextLabel] == nil || [[row detailTextLabel] isEqualToString:@""])
 			cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Disabled: %@", nil), disabled];
 		else
-			cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%@ (Disabled: %@)", nil), [row detailTextLabel], disabled];
-		cell.detailTextLabel.textColor = [UIColor redColor];
+			cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%1$@ (Disabled: %2$@)", nil), [row detailTextLabel], disabled];
+		cell.detailTextLabel.textColor = UIColor.systemRedColor;
 	}
 	
 	return cell;
